@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Birthday ❤️</title>
+  <style>
+    body {
+      background: url("/static/roses.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: red;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+    }
+    h1 {
+      font-size: 50px;
+      text-shadow: 0 0 20px #ff0000;
+    }
+    p {
+      font-size: 24px;
+      color: white;
+      text-shadow: 0 0 10px #ff3399;
+    }
+    .symbols {
+      font-size: 60px;
+      margin-top: 20px;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px red; }
+      to { text-shadow: 0 0 30px yellow; }
+    }
+  </style>
+</head>
+<body>
+  <h1>✨ HAPPY BIRTHDAY AKSHUU!! ✨</h1>
+  <p>If The World Was Ending, I Wanna Be Next To You..❤️</p>
 
+  <!-- Hidden audio -->
+  <audio id="song" loop>
+    <source src="{{ url_for('static', filename='birthday_song.mp3') }}" type="audio/mpeg">
+  </audio>
+
+  <div class="symbols">❤️ 🌹 ✨ 💎 🔥</div>
+
+  <script>
+    // Try to force autoplay
+    window.onload = function() {
+      var audio = document.getElementById("song");
+      audio.play().catch(() => {
+        // If blocked, show a popup asking user to tap
+        alert("Tap anywhere to start the music 🎶");
+        document.body.addEventListener("click", () => {
+          audio.play();
+        }, { once: true });
+      });
+    };
+  </script>
+</body>
+</html>
